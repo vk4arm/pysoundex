@@ -1,6 +1,7 @@
 pysoundex
 =========
 
+Python library for
 Multilanguage configurable soundex (with English and Russian)
 
 
