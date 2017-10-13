@@ -21,7 +21,6 @@ soundconfig = {
             4: ['l'],
             5: ['m', 'n'],
             6: ['r']
-
         }
     },
 }
@@ -32,7 +31,7 @@ def revert_config():
         soundconfig[k]["codes"] = {}
         for (code) in soundconfig[k]["consonants"].keys():
             for c in soundconfig[k]["consonants"][code]:
-                c = c.decode("utf-8")
+                c = c.decode("utf-8") if hasattr(c, 'decode') else c
                 soundconfig[k]["codes"][c] = code
 
 

@@ -2,6 +2,8 @@
 
 import re
 
+from builtins import str
+
 from lang_soundconfig import soundconfig
 
 version = '0.1'
@@ -16,19 +18,20 @@ def soundex(word, lang="en_US"):
     """
     if len(word) == 0:
         return "0000"
-    
+
     cfg = soundconfig[lang]
-    word = word.decode("utf-8").lower()    
+    word = word.decode("utf-8").lower() if hasattr(word, 'decode') else word.lower()
     snd_arr = [word[0], 0, 0, 0]
     
     word = word[1:]    
     word = re.sub('[%s]' % ''.join(cfg["vowels"]), '', word)
     i=1
     for c in word:
-        if cfg["codes"].has_key(c):
+        if c in cfg["codes"]:
             char_code = cfg["codes"][c]
             if snd_arr[i-1] != char_code:
                 snd_arr[i] = char_code
                 i += 1
-            if i==4: break
-    return ''.join(map(lambda x: unicode(x), snd_arr))
+            if i == 4:
+                break
+    return ''.join(map(lambda x: str(x), snd_arr))
