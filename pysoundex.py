@@ -14,7 +14,8 @@ def soundex(word, lang="en_US"):
     """
     Really simple soundex realisation. Multilanguage - configurable
     """
-    if len(word)==0: return "0000"
+    if len(word) == 0:
+        return "0000"
     
     cfg = soundconfig[lang]
     word = word.decode("utf-8").lower()    
