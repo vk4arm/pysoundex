@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
       name='pysoundex',
-      version='1.0',
+      version='2.0',
       description='Multilanguage configurable Soundex',
       author='Victor Kuriashkin',
       author_email='vk4arm@gmail.com',
